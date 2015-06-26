@@ -12,6 +12,10 @@ io.on('connection', function(socket){
     socket.on('disconnect', function(){
         console.log('user disconnect');
     });
+
+    socket.on('chat message', function(msg){
+        console.log('message: ' + msg);
+    });
 });
 
 http.listen(9100, function(){
