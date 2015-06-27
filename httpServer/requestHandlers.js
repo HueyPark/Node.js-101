@@ -1,11 +1,21 @@
-function start() {
+var fs = require('fs');
+
+function start(res) {
     console.log('Request handler start was called.');
-    return 'start';
+    fs.readFile('./start.html', function (err, data) {
+        if (err) throw err;
+        
+        res.writeHead(200, {"Content-Type": "text/html"});
+        res.write(data);
+        res.end();
+    });
 }
 
-function upload() {
+function upload(res) {
     console.log('Request handler upload was called.');
-    return 'upload';
+    res.writeHead(200, {"Content-Type": "text/html"});
+    res.write('upload');
+    res.end();
 }
 
 exports.start = start;
